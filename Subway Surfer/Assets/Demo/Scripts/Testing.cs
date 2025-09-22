@@ -36,3 +36,4 @@ public class Testing : MonoBehaviour
         Debug.Log("Child localPosition : " + childPosition.localPosition);
     }
 }
+

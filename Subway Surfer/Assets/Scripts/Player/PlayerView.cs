@@ -13,10 +13,5 @@ namespace Player
         {
             this.playerController = playerController;
         }
-
-        private void Start()
-        {
-            Debug.Log("PlayerView started");
-        }
     }
 }
