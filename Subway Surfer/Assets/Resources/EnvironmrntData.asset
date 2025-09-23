@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataList:
   - environmentType: 0
-    environmentPrefab: {fileID: 5992737838116039303, guid: 42d6b04be27a81c4a8dead1538747d23, type: 3}
+    environmentPrefab: {fileID: 8649630312573831146, guid: cefc5e19ccee0234da3910accc017e49, type: 3}

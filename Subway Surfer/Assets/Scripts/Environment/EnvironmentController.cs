@@ -1,61 +1,126 @@
+using Entities;
+using Environment.Track;
+using Main;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
+using UnityEngine.TerrainTools;
+using Utilities;
 
-public class EnvironmentController
+namespace Environment
 {
-    private List<EnvironmentView> trackSpawnsList = new List<EnvironmentView>();
-    List<TrackSpawnData> markerList;
-    private EnvironmentScriptableObject environmentSO;
-
-
-    public EnvironmentController(EnvironmentScriptableObject environmentSO)
+    public class EnvironmentController
     {
-        this.environmentSO = environmentSO;
-        InitializeTrackMarker();
-        CreateTrack();
-    }
+        List<TrackSpawnData> markerList;
+        private TrackPool trackPool;
+        private EnvironmentView environmentView;
 
-    private void CreateTrack()
-    {
-        EnvironmentData config = GetEnvironmentConfig(EnvironmentType.Track);
-        if(config == null)
+        public EnvironmentController(List<TrackSpawnData> markerList, TrackPool trackPool)
         {
-            Debug.LogWarning("No environment config found for Track type.");
-            return;
+            this.markerList = markerList;
+            this.trackPool = trackPool;
+            environmentView = GameService.Instance.envView;
+            environmentView.SetController(trackPool);
+
+            TrackController.OnTrackRecycled += HandleTrackRecycled;
+
+            //CreateTracks();
+            SingleTrackSpawn();
         }
 
-        foreach (TrackSpawnData data in markerList)
-        {
-            Vector3 position = new Vector3(data.xPosition, 0, 0);
-            GameObject obj = GameObject.Instantiate(config.environmentPrefab, position, Quaternion.identity);
-            EnvironmentView view = obj.GetComponent<EnvironmentView>();
 
-            if(view == null)
+        private void SingleTrackSpawn()
+        {
+            var marker = markerList[0];
+            Vector3 nextSpawnPosition = new Vector3(marker.xPosition, 0f, 0f);
+            for (int j = 0; j < 10; j++)
             {
-                Debug.LogWarning("Environment prefab does not have an EnvironmentView component.");
-                continue;
+                var track = trackPool.GetTrack();
+                var t = track.GetTrack();
+                t.transform.position = nextSpawnPosition;
+                nextSpawnPosition.z += 3;
+            }
+            nextSpawnPosition.z -= 3;
+            marker.lastSpawnPositon = nextSpawnPosition;
+            markerList[0] = marker;
+        }
+
+        private void HandleTrackRecycled(TrackController recycledTrack)
+        {
+            var marker = markerList[0];
+            Vector3 nextSpawnPosition = marker.lastSpawnPositon;
+            var track = trackPool.GetTrack();
+            var t = track.GetTrack();
+            t.transform.position = nextSpawnPosition;
+            t.gameObject.SetActive(true);
+            Debug.Log(t.transform.position);
+        }
+
+        ~EnvironmentController()
+        {
+            TrackController.OnTrackRecycled -= HandleTrackRecycled;
+        }
+
+        private void CreateTracks()
+        {
+            if (trackPool == null)
+            {
+                Debug.LogWarning("Track pool is not initialized.");
+                return;
             }
 
-            trackSpawnsList.Add(view);
+            for (int i = 0; i < markerList.Count; i++)
+            {
+                var marker = markerList[i];
+
+                if (marker.state != TrackState.Active) 
+                    continue;
+
+                Vector3 nextSpawnPosition = new Vector3(marker.xPosition, 0f, 0f);
+
+                for (int j = 0; j < 5; j++)
+                {
+                    var track = trackPool.GetTrack();
+                    var t = track.GetTrack();
+                    t.transform.position = nextSpawnPosition;
+
+
+                    nextSpawnPosition.z += 3;
+                }
+
+                marker.lastSpawnPositon = nextSpawnPosition;
+                markerList[i] = marker;
+            }
         }
-    }
 
-    private EnvironmentData GetEnvironmentConfig(EnvironmentType trackType)
-    {
-        return environmentSO.DataList?.Find(type => type.environmentType == trackType);
-    }
-
-    private void InitializeTrackMarker()
-    {
-        markerList = TrackSpawnMarker.Instance.GetTrackSpawnDatas();
-        if (markerList == null)
+        private void Spawn()
         {
-            Debug.LogWarning("No track spawn data found.");
-            return;
+            for (int i = 0; i < markerList.Count; i++)
+            {
+                var marker = markerList[i];
+
+                if (marker.state != TrackState.Active)
+                    continue;
+
+                Vector3 position = marker.lastSpawnPositon;
+
+                var newTrack = trackPool.GetTrack();
+                var t = newTrack.GetTrack();
+                t.transform.position = position;
+
+            }
         }
+
+        private void Respawn(TrackController track)
+        {
+            //trackPool.ReturnItem(track);
+            Debug.Log(trackPool.Count);
+
+        }
+
+        //Create method in which when onTrackRecycle is invoke, get the trackController return it to trackPool and get the track and position it on lastSpawnPosition of the markerList
 
     }
 }

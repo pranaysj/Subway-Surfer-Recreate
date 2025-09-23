@@ -1,9 +1,11 @@
+using Entities;
+using Environment;
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utilities;
-using Player;
 
 namespace Main
 {
@@ -11,6 +13,7 @@ namespace Main
     {
         [SerializeField] private PlayerScriptableObject playerScriptableObject;
         [SerializeField] private EnvironmentScriptableObject environmentScriptableObject;
+        public EnvironmentView envView;
 
         private PlayerService playerService;
         private EnvironmentService environmentService;
@@ -19,8 +22,10 @@ namespace Main
         {
             base.Awake();
             playerService = new PlayerService(playerScriptableObject);
-            environmentService = new EnvironmentService(environmentScriptableObject);
+            environmentService = new EnvironmentService(environmentScriptableObject, TrackSpawnMarker.Instance);
             RegisterServices();
+
+            Debug.Log("GameService");
         }
 
         private void RegisterServices()

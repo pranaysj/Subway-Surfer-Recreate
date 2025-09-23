@@ -1,4 +1,7 @@
-public enum EnvironmentType
+namespace Environment
 {
-    Track
+    public enum EnvironmentType
+    {
+        Track
+    }
 }
