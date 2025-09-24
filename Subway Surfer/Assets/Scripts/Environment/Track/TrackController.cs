@@ -11,7 +11,7 @@ namespace Environment.Track
         public GameObject track;
         private TrackView trackView;
 
-        public static event Action<TrackController> OnTrackRecycled;
+        //public static event Action<TrackController> OnTrackRecycled;
 
         public TrackController(EnvironmentData envData)
         {
@@ -26,9 +26,9 @@ namespace Environment.Track
             return track;
         }
 
-        public void UpdateTrackMotion()
+        public void UpdateTrackMotion(int speed)
         {
-            track.transform.Translate(Vector3.back * Time.deltaTime * 2);
+            track.transform.Translate(Vector3.back * Time.deltaTime * speed);
         }
 
 
@@ -36,7 +36,7 @@ namespace Environment.Track
         {
             ServiceLocator.GetService<EnvironmentService>().GetTrackPool().ReturnItem(this);
             track.gameObject.SetActive(false);
-            OnTrackRecycled?.Invoke(this); // Notify listeners
+            TrackEventManager.RaiseRecycled(this);
         }
 
     }

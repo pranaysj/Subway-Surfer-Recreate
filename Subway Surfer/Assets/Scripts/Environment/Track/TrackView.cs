@@ -9,15 +9,18 @@ namespace Environment.Track
 
     public class TrackView : MonoBehaviour
     {
+        [SerializeField] private int speed;
+        [Header("Also change offsetSpawnPosition")]
+        [SerializeField] private int zOutOfBound;
         private TrackController trackController;
 
         public void SetController(TrackController trackController) => this.trackController = trackController;
 
         void Update()
         {
-            trackController?.UpdateTrackMotion();
+            trackController?.UpdateTrackMotion(speed);
             
-            if (transform.position.z < -3)
+            if (transform.position.z < zOutOfBound)
             {
                 RecycleTrack();
             }

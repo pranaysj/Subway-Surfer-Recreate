@@ -19,7 +19,7 @@ namespace Entities
             {
                 TrackId track = GetTrackId(i);
                 TrackState state = GetTrackState(i);
-                float xPosition = i;
+                float xPosition = i-2;
                 trackSpawnDataList.Add(new TrackSpawnData
                 {
                     track = track,
