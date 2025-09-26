@@ -11,19 +11,5 @@ namespace Environment
         {
             this.trackPool = trackPool;
         }
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                trackPool.GetTrack();
-                Debug.Log(trackPool.Count);
-            }
-        }
     }
 }

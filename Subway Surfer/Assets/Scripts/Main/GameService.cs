@@ -18,20 +18,26 @@ namespace Main
         private PlayerService playerService;
         private EnvironmentService environmentService;
 
+        private InputService inputService;
+        private IStateMachine playerStateMachine;
+
         public override void Awake()
         {
             base.Awake();
-            playerService = new PlayerService(playerScriptableObject);
+            inputService = new InputService();
+            playerStateMachine = new PlayerStateMachine();
+            playerService = new PlayerService(playerScriptableObject, playerStateMachine);
             environmentService = new EnvironmentService(environmentScriptableObject, TrackSpawnMarker.Instance);
             RegisterServices();
-
-            Debug.Log("GameService");
+            playerService.Initialize();
         }
 
         private void RegisterServices()
         {
             ServiceLocator.RegisterService<PlayerService>(playerService);
+            ServiceLocator.RegisterService<IStateMachine>(playerStateMachine);
             ServiceLocator.RegisterService<EnvironmentService>(environmentService);
+            ServiceLocator.RegisterService<InputService>(inputService);
         }
     }
 }

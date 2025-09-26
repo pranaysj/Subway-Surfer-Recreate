@@ -13,5 +13,12 @@ namespace Player
         {
             this.playerController = playerController;
         }
+
+        public void Update()
+        {
+            playerController?.Update();
+        }
+
+        public Transform Transform => transform;
     }
 }
