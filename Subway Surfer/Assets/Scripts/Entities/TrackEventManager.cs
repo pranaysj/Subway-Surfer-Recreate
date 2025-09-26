@@ -1,3 +1,4 @@
+using Entities;
 using Environment.Track;
 using Main;
 using System;
@@ -20,7 +21,7 @@ public class TrackEventManager
         OnTrackRecycledOnce?.Invoke(track);
 
         // Start a timer to reset
-        GameService.Instance.StartCoroutine(ResetAfterDelay());
+        TrackSpawnMarker.Instance.StartCoroutine(ResetAfterDelay());
     }
 
     private static IEnumerator ResetAfterDelay()

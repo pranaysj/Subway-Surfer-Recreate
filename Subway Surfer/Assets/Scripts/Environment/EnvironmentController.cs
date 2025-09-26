@@ -64,7 +64,6 @@ namespace Environment
                 var track = trackPool.GetTrack();
                 var t = track.GetTrack();
 
-                Debug.Log("Spawn Track at: " + marker.lastSpawnPositon);
                 t.transform.position = marker.lastSpawnPositon;
                 t.gameObject.SetActive(true);
             }
