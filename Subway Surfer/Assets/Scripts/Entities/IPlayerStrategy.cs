@@ -4,6 +4,7 @@ using UnityEngine;
 public interface IPlayerStrategy
 {
     void Jump();
-    void Roll();
+    void Roll(float yPosition, float ySize);
     void Run();
+    void Dodge(DodgeDirection direction);
 }

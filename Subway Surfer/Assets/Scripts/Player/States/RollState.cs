@@ -17,22 +17,22 @@ public class RollState : IState
     public void Enter()
     {
         // Play roll animation
+        playerStrategy.Roll(-0.5f, 1);
+        rollDuration = 1.0f;
     }
 
     public void Update()
     {
-
         rollDuration -= Time.deltaTime;
 
         if (rollDuration <= 0) 
         {
+            playerStrategy.Roll(0.0f,2); // Reset collider size after roll
             stateMachine.ChangeState(new RunState(stateMachine));
         }
     }
 
     public void Exit()
     {
-        playerStrategy.Roll();
-        rollDuration = 0.5f;
     }
 }

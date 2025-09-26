@@ -48,7 +48,7 @@ namespace Environment
                     nextSpawnPosition.z += zOffsetSpawnPosition;
                 }
                 nextSpawnPosition.z -= zOffsetSpawnPosition;
-                marker.lastSpawnPositon = nextSpawnPosition;
+                marker.lastSpawnPosition = nextSpawnPosition;
                 markerList[i] = marker;
             }
         }
@@ -64,7 +64,7 @@ namespace Environment
                 var track = trackPool.GetTrack();
                 var t = track.GetTrack();
 
-                t.transform.position = marker.lastSpawnPositon;
+                t.transform.position = marker.lastSpawnPosition;
                 t.gameObject.SetActive(true);
             }
         }

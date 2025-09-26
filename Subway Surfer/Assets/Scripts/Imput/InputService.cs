@@ -18,7 +18,15 @@ public class InputService
         {
             OnCommandIssued?.Invoke(new RollCommand());
         }
-        //Other Input like Move, Roll
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            OnCommandIssued?.Invoke(new MoveLeftCommand());
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            OnCommandIssued?.Invoke(new MoveRightCommand());
+        }
     }
 
 }

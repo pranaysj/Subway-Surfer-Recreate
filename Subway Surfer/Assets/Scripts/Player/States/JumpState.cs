@@ -17,16 +17,14 @@ public class JumpState : IState
     public void Enter()
     {
         // Play jump animation
-        jumpDuration = 0.5f;
         playerStrategy.Jump();
+        jumpDuration = 1.0f;
     }
 
     public void Update()
     {
-        //Debug.Log("Before : " + jumpDuration);
         jumpDuration -= Time.deltaTime;
-        //Debug.Log("After : " + jumpDuration);
-        if (jumpDuration < 0) 
+        if (jumpDuration <= 0) 
         {
             stateMachine.ChangeState(new RunState(stateMachine));
         }

@@ -28,7 +28,7 @@ namespace Player
 
         private void InitializeView()
         {
-            gameObject = GameObject.Instantiate(playerScriptableObject.playerPrefab);
+            gameObject = GameObject.Instantiate(playerScriptableObject.playerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
             playerView = gameObject.GetComponent<PlayerView>();
             playerView.SetController(this);
         }
@@ -38,7 +38,7 @@ namespace Player
             stateMachine.Update();
         }
 
-        public GameObject PlayerTransform()
+        public GameObject PlayerGameObject()
         {
             return gameObject;
 

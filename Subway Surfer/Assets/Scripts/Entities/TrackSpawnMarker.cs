@@ -22,7 +22,7 @@ namespace Entities
                 float xPosition = i-2;
                 trackSpawnDataList.Add(new TrackSpawnData
                 {
-                    track = track,
+                    ID = track,
                     state = state,
                     xPosition = xPosition
                 });
@@ -51,9 +51,9 @@ namespace Entities
 
     public struct TrackSpawnData
     {
-        public TrackId track;
+        public TrackId ID;
         public TrackState state;
         public float xPosition;
-        public Vector3 lastSpawnPositon;
+        public Vector3 lastSpawnPosition;
     }
 }
