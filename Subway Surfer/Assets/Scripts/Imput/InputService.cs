@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputService 
+public class InputService
 {
     public event Action<ICommand> OnCommandIssued;
 

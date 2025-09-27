@@ -7,4 +7,5 @@ public interface IPlayerStrategy
     void Roll(float yPosition, float ySize);
     void Run();
     void Dodge(DodgeDirection direction);
+    void Fall();
 }

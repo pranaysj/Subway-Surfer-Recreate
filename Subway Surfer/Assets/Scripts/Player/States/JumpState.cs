@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class JumpState : IState
 {
@@ -18,15 +19,18 @@ public class JumpState : IState
     {
         // Play jump animation
         playerStrategy.Jump();
-        jumpDuration = 1.0f;
+        jumpDuration = 0.7f;
     }
 
     public void Update()
     {
+
         jumpDuration -= Time.deltaTime;
+
+
         if (jumpDuration <= 0) 
         {
-            stateMachine.ChangeState(new RunState(stateMachine));
+            stateMachine.ChangeState(new FallState(stateMachine));
         }
     }
 

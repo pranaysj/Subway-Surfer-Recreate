@@ -22,7 +22,9 @@ public class PlayerInput : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             Debug.Log("Jump : " + context.phase);
+            isGounded = false;
         }
+
 
     }
 

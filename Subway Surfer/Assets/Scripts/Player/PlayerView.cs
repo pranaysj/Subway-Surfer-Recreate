@@ -17,6 +17,7 @@ namespace Player
         public void Update()
         {
             playerController?.Update();
+            Debug.DrawRay(transform.position, Vector3.down * 0.7f, Color.red);
         }
 
         public Transform Transform => transform;

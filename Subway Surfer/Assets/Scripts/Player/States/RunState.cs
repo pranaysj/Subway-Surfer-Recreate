@@ -24,5 +24,4 @@ public class RunState : IState
     public void Exit()
     {
     }
-
 }
