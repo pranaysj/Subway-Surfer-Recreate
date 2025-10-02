@@ -7,9 +7,9 @@ public class MoveRightCommand : ICommand
 {
     private IStateMachine stateMachine;
     
-    public MoveRightCommand()
+    public MoveRightCommand(IStateMachine stateMachine)
     {
-        stateMachine = ServiceLocator.GetService<IStateMachine>();
+        this.stateMachine = stateMachine;
     }
     public void Execute()
     {

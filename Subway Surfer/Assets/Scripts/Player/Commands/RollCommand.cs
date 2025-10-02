@@ -6,9 +6,9 @@ using Utilities;
 public class RollCommand : ICommand
 {
     public IStateMachine stateMachine;
-    public RollCommand()
+    public RollCommand(IStateMachine stateMachine)
     {
-        stateMachine = ServiceLocator.GetService<IStateMachine>();
+        this.stateMachine = stateMachine;
     }
     public void Execute()
     {

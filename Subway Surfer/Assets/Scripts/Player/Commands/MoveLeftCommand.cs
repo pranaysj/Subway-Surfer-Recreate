@@ -6,9 +6,9 @@ using Utilities;
 public class MoveLeftCommand : ICommand
 {
     private IStateMachine stateMachine;
-    public MoveLeftCommand()
+    public MoveLeftCommand(IStateMachine stateMachine)
     {
-        stateMachine = ServiceLocator.GetService<IStateMachine>();
+        this.stateMachine = stateMachine;
     }
     public void Execute()
     {

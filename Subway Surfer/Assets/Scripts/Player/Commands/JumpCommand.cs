@@ -6,9 +6,9 @@ using Utilities;
 public class JumpCommand : ICommand
 {
     private IStateMachine stateMachine;
-    public JumpCommand()
+    public JumpCommand(IStateMachine stateMachine)
     {
-        stateMachine = ServiceLocator.GetService<IStateMachine>();
+        this.stateMachine = stateMachine;
     }
     public void Execute()
     {

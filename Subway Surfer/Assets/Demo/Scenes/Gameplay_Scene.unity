@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227710262}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalRotation: {x: 0.08715578, y: -0, z: -0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 4, z: -6.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -510,6 +510,8 @@ GameObject:
   - component: {fileID: 1807636303}
   - component: {fileID: 1807636308}
   - component: {fileID: 1807636307}
+  - component: {fileID: 1807636310}
+  - component: {fileID: 1807636309}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -599,7 +601,7 @@ Transform:
   m_GameObject: {fileID: 1807636302}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 2.22, z: 0.69}
+  m_LocalPosition: {x: -0.11, y: 1.8, z: 0.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -617,7 +619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e83531f7084924c8363f54095b5527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 8
   isGounded: 0
 --- !u!54 &1807636308
 Rigidbody:
@@ -644,8 +645,50 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!143 &1807636309
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807636302}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1807636310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807636302}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d7caa2beefdf84193c4554434bab7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneDistance: 4
+  moveSpeed: 0
+  jumpForce: 10
+  gravity: 20
 --- !u!1 &1886682042
 GameObject:
   m_ObjectHideFlags: 0
