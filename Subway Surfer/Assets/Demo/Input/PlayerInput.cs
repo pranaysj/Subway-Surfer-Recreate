@@ -12,6 +12,10 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        if(playerRb == null)
+            {
+            Debug.LogError("Rigidbody component not found on " + gameObject.name);
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
