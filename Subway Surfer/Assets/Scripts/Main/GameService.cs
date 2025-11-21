@@ -25,7 +25,6 @@ namespace Main
             environmentService = new EnvironmentService(environmentScriptableObject, TrackSpawnMarker.Instance);
             RegisterServices();
 
-            Debug.Log("GameService");
         }
 
         private void RegisterServices()

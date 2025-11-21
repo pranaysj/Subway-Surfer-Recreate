@@ -30,6 +30,7 @@ namespace Player
 
         bool isMove = false;
 
+
         internal void SetController(PlayerController playerController)
         {
             this.playerController = playerController;
@@ -95,18 +96,20 @@ namespace Player
                 fastFallRequested = false;
             }
 
-            // --- Smooth horizontal movement using physics-friendly MovePosition ---
-            Vector3 newPos = Vector3.Lerp(transform.position, targetPos, speed * Time.fixedDeltaTime);
-            //rb.MovePosition(newPos);
+            float newX = Mathf.MoveTowards(transform.position.x, targetPos.x, speed * Time.fixedDeltaTime);
+
             if(isMove)
             {
-                transform.position = newPos;
-                if (transform.position == targetPos)
+
+                transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+                //transform.position.x = newX;
+                if(newX == targetPos.x)
                 {
                     isMove = false;
-
                 }
             }
+
+
         }
 
         private void OnCollisionEnter(Collision collision)

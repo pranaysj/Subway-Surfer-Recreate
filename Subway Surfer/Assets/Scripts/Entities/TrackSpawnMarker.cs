@@ -28,7 +28,6 @@ namespace Entities
                 });
 
             }
-            Debug.Log("TrackSpawnMarker");
         }
 
         private TrackState GetTrackState(int i)

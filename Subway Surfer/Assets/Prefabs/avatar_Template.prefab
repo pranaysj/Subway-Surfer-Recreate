@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6d4356c4abd955a4a9042148ef75e11f, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 200ca7f822678e146b73cde25ae84814, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6558989313491409213, guid: 200ca7f822678e146b73cde25ae84814, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -176,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37c9c31f89836d4ea1ec1af589458c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
   moveDistance: 2
   speed: 5
   minX: -2
