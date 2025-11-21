@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Player
     {
         private PlayerScriptableObject playerScriptableObject;
         private PlayerView playerView;
+        private GameObject gm;
 
         public PlayerController(PlayerScriptableObject playerScriptableObject)
         {
@@ -17,7 +19,8 @@ namespace Player
 
         private void InitializeView()
         {
-            playerView = Object.Instantiate(playerScriptableObject.playerPrefab);
+            gm = UnityEngine.Object.Instantiate(playerScriptableObject.playerPrefab, Vector3.up, Quaternion.identity);
+            playerView = gm.GetComponent<PlayerView>();
             playerView.SetController(this);
         }
     }
