@@ -17,7 +17,8 @@ public class Obstcales : MonoBehaviour
     {
         trackSpawnMarker = TrackSpawnMarker.Instance;
         GetLaneXPosition();
-        SpawnPrimitive();
+        StartCoroutine(SpawnRoutine());
+
     }
 
     private void SpawnPrimitive()
@@ -44,7 +45,7 @@ public class Obstcales : MonoBehaviour
         {
             if (laneBlocked[lane])
             {
-                Vector3 spawnPosition = lanes[lane] + new Vector3(-0.5f, 0, 20);
+                Vector3 spawnPosition = lanes[lane] + new Vector3(-0.5f, 0, 55);
                 int obstacleIndex = UnityEngine.Random.Range(0, obstacles.Length);
                 Instantiate(obstacles[obstacleIndex], spawnPosition, Quaternion.identity);
             }
@@ -52,11 +53,14 @@ public class Obstcales : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+
+    IEnumerator SpawnRoutine()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        while (true)
         {
+            float waitTime = UnityEngine.Random.Range(0f, 5f);   // random seconds between 0–5
+            yield return new WaitForSeconds(waitTime);
+
             SpawnPrimitive();
         }
     }
