@@ -21,6 +21,7 @@ namespace Environment
             this.environmentSO = environmentSO;
             this.markerList = markerLiat.GetTrackSpawnData();
 
+
             CreateTrackPool();
             environmentController = new EnvironmentController(markerList, trackPool);
         }

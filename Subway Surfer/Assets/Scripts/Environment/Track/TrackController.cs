@@ -15,6 +15,7 @@ namespace Environment.Track
 
         public TrackController(EnvironmentData envData)
         {
+            
             track = GameObject.Instantiate(envData.environmentPrefab);
             trackView = track.GetComponent<TrackView>();
             trackView.SetController(this);

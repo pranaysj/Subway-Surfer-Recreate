@@ -26,7 +26,6 @@ namespace Entities
                     state = state,
                     xPosition = xPosition
                 });
-
             }
         }
 

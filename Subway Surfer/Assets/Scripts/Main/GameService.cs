@@ -18,6 +18,9 @@ namespace Main
         private PlayerService playerService;
         private EnvironmentService environmentService;
 
+        public GameObject rampPrefab;
+        public Vector3 pos;
+
         public override void Awake()
         {
             base.Awake();
@@ -31,6 +34,15 @@ namespace Main
         {
             ServiceLocator.RegisterService<PlayerService>(playerService);
             ServiceLocator.RegisterService<EnvironmentService>(environmentService);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Instantiate(rampPrefab, pos, Quaternion.identity);
+                Debug.Log(rampPrefab.transform.position);
+            }
         }
     }
 }

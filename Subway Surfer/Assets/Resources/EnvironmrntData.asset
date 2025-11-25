@@ -15,3 +15,5 @@ MonoBehaviour:
   DataList:
   - environmentType: 0
     environmentPrefab: {fileID: 8649630312573831146, guid: cefc5e19ccee0234da3910accc017e49, type: 3}
+  - environmentType: 1
+    environmentPrefab: {fileID: 7211237799486049836, guid: a58ccdc549e15fc409f2c3f13b9b431c, type: 3}

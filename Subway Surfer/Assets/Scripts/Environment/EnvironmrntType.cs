@@ -2,6 +2,7 @@ namespace Environment
 {
     public enum EnvironmentType
     {
-        Track
+        Track,
+        Ramp_1
     }
 }
