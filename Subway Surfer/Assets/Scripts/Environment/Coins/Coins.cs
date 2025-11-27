@@ -5,6 +5,7 @@ using UnityEngine;
 public class Coins : MonoBehaviour
 {
     public float laneIndex;
+    private int zOutOfBound = -5;
 
     private void Start()
     {
@@ -14,6 +15,11 @@ public class Coins : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.back * Time.deltaTime * 3);
+
+        if (transform.position.z < zOutOfBound)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
