@@ -8,4 +8,5 @@ public class Ramp : MonoBehaviour
     {
         transform.Translate(Vector3.back * Time.deltaTime * 3);
     }
+   
 }

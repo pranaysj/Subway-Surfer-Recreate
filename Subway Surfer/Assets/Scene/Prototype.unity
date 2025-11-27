@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 145411351}
   - component: {fileID: 145411352}
   - component: {fileID: 145411353}
+  - component: {fileID: 145411354}
   m_Layer: 0
   m_Name: GameService
   m_TagString: Untagged
@@ -214,6 +215,19 @@ MonoBehaviour:
   - {fileID: 3298887849286433244, guid: ac615313988825748ad6c2681ef6694d, type: 3}
   - {fileID: 7855595106802462638, guid: f7ff70658f1d86d4189928b68f40e008, type: 3}
   - {fileID: 3357753158214866573, guid: e02126a16cfc7a0419ee35bf9060c7e9, type: 3}
+--- !u!114 &145411354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145411348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d081781189a027141b3d7bc85641e95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 8159886725937149682, guid: 74d1f76e7ea8d79448260c33784251e3, type: 3}
 --- !u!1 &885839191
 GameObject:
   m_ObjectHideFlags: 0
