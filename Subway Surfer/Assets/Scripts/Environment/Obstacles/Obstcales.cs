@@ -50,24 +50,20 @@ public class Obstcales : MonoBehaviour
                 Instantiate(obstacles[obstacleIndex], spawnPosition, Quaternion.identity);
             }
         }
-        
     }
-
 
     IEnumerator SpawnRoutine()
     {
         while (true)
         {
-            float waitTime = UnityEngine.Random.Range(0f, 5f);   // random seconds between 0–5
+            float waitTime = UnityEngine.Random.Range(0.5f, 5f);   // random seconds between 0–5
             yield return new WaitForSeconds(waitTime);
-
             SpawnPrimitive();
         }
     }
 
     void GetLaneXPosition()
     {
-
         List<TrackSpawnData> markerList = trackSpawnMarker.GetTrackSpawnData();
         foreach (var marker in markerList)
         {
