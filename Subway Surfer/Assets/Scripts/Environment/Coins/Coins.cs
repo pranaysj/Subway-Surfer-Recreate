@@ -1,12 +1,16 @@
-using Entities;
-using Environment;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coins: MonoBehaviour
+public class Coins : MonoBehaviour
 {
+    public float laneIndex;
+
+    private void Start()
+    {
+        laneIndex = transform.position.x;
+    }
+
     void Update()
     {
         transform.Translate(Vector3.back * Time.deltaTime * 3);
@@ -14,6 +18,10 @@ public class Coins: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other + "Coin collected!");
+        if (other.CompareTag("Obstacle"))
+        {
+            CoinsSpawn.Instance.ChangeLane(laneIndex);
+
+        }
     }
 }
