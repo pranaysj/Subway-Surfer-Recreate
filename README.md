@@ -2,7 +2,8 @@
 A clean, modular infinite runner prototype inspired by Subway Surfers, built in Unity with scalable architecture and production-ready systems.
 
 ## 🎥 Demo
-Replace these GIF paths with your exported gameplay GIFs located in docs/gifs/.
+![UntitledProject-ezgif com-resize](https://github.com/user-attachments/assets/dca2336c-e434-4d7b-9d47-5d87573615d2)
+
 
 ## ✨ Features
 - Infinite procedural track generation
@@ -24,6 +25,7 @@ Replace these GIF paths with your exported gameplay GIFs located in docs/gifs/.
 
 ## 🧩 Architecture & Patterns Used
 This prototype is built around clean, scalable systems:
+
 **Core Patterns**
 + State Machine – game states & player movement states
 + Object Pooling – tiles, obstacles, items
